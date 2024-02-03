@@ -1,11 +1,37 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Function to send a message to content script
-    const sendMessage = (action) => {
+
+
+
+  const sendMessage = (action) => {
+    // Check if browser is Edge
+    if (typeof browser !== "undefined" && browser.runtime) {
+      browser.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        browser.tabs.sendMessage(tabs[0].id, { action });
+      });
+    }
+    // Check if browser is Firefox
+    else if (typeof chrome !== "undefined" && chrome.runtime) {
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, { action });
       });
-    };
-  
+    }
+    // Check if browser is Brave
+    else if (typeof chrome !== "undefined" && chrome.br.runtime) {
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, { action });
+      });
+    }
+    // Assume Chrome if not Edge, Firefox, or Brave
+    else {
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, { action });
+      });
+    }
+  };
+
+
+    // Function to send a message to content script
+   
     // Function to update the speed display
     const updateSpeedDisplay = (speed) => {
       document.getElementById('speedDisplay').innerText = `Current Speed: ${speed}x`;
