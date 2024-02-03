@@ -1,4 +1,4 @@
-#YouTube Speed Control Chrome Extension
+**YouTube Speed Control Chrome Extension**
 Overview
 YouTube Speed Control is a Chrome extension that allows users to control the playback speed of YouTube videos easily. With this extension, users can speed up or slow down YouTube videos with just a click of a button.
 
