@@ -1,0 +1,51 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    margin: 5px ;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  #speedUp {
+    background-color: #36b37e;
+  }
+
+  #speedDown {
+    background-color: #ff5630;
+  }
+
+  #getCurrentSpeed {
+    background-color: rgb(221, 221, 221);
+    color: black;
+  }
+  
+  #speedDisplay {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+
+  #icon {
+    width: 50px;
+    height: 50px;
+    /* margin-bottom: 10px; */
+  }
+  
