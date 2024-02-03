@@ -1,12 +1,53 @@
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    if (request.action === 'speedUp') {
-      speedUp();
-    } else if (request.action === 'speedDown') {
-      speedDown();
-    } else if (request.action === 'getCurrentSpeed') {
-      getCurrentSpeed();
-    }
-  });
+  if (typeof browser !== "undefined" && browser.runtime) {
+    browser.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+      if (request.action === 'speedUp') {
+        speedUp();
+      } else if (request.action === 'speedDown') {
+        speedDown();
+      } else if (request.action === 'getCurrentSpeed') {
+        getCurrentSpeed();
+      }
+    });
+  } 
+  // Check if browser is Firefox
+  else if (typeof chrome !== "undefined" && chrome.runtime) {
+    chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+      if (request.action === 'speedUp') {
+        speedUp();
+      } else if (request.action === 'speedDown') {
+        speedDown();
+      } else if (request.action === 'getCurrentSpeed') {
+        getCurrentSpeed();
+      }
+    });
+  }
+  // Check if browser is Brave
+  else if (typeof chrome !== "undefined" && chrome.br.runtime) {
+    chrome.br.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+      if (request.action === 'speedUp') {
+        speedUp();
+      } else if (request.action === 'speedDown') {
+        speedDown();
+      } else if (request.action === 'getCurrentSpeed') {
+        getCurrentSpeed();
+      }
+    });
+  }
+  // Assume Chrome if not Edge, Firefox, or Brave
+  else {
+    chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+      if (request.action === 'speedUp') {
+        speedUp();
+      } else if (request.action === 'speedDown') {
+        speedDown();
+      } else if (request.action === 'getCurrentSpeed') {
+        getCurrentSpeed();
+      }
+    });
+  }
+
+
+  
   
   function speedUp() {
     const video = document.querySelector('video');
@@ -37,4 +78,5 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   function updateSpeedDisplay(speed) {
     chrome.runtime.sendMessage({ action: 'updateSpeedDisplay', speed });
   }
+
   
